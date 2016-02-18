@@ -110,5 +110,5 @@ void searchExpenseMenu(void) {
         if (userChoice==3) {
             userDone = true;
         }
-    }    
+    }
 }
