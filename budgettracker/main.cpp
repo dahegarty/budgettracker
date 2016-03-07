@@ -55,7 +55,7 @@ void mainMenu(void) {
 
 void addExpenseMenu(void) {
     
-    int userChoice;
+    /* int userChoice;
     bool userDone;
     
     while(!userDone) {
@@ -80,12 +80,12 @@ void addExpenseMenu(void) {
         if (userChoice==3) {
             userDone = true;
         }
-    }
+    } */
 }
 
 void searchExpenseMenu(void) {
     
-    int userChoice;
+   /* int userChoice;
     bool userDone;
     
     while(!userDone) {
@@ -110,5 +110,11 @@ void searchExpenseMenu(void) {
         if (userChoice==3) {
             userDone = true;
         }
-    }
+    } */
+}
+
+void addExpense(void) {
+    
+    
+    
 }
