@@ -7,25 +7,31 @@
 //
 
 #include <iostream>
+//#include "vector.hpp"
+#include "expenseItem.h"
+#include <string>
+#include <vector>
 
 using namespace std;
 
-void addExpenseMenu(void);
+void addExpenseMenu(vector<expenseItem> &budget);
 void searchExpenseMenu(void);
-void mainMenu(void);
+void mainMenu(vector<expenseItem> &budget);
 
 int main(int argc, const char * argv[]) {
     
     cout << "Welcome to LLT's budget program." << endl << endl;
     
+    //boost::container::vector<expenseItem::expenseItem> budget(100);
     
+    vector<expenseItem> budget;
     
-    mainMenu();
+    mainMenu(budget);
     
     return 0;
 }
 
-void mainMenu(void) {
+void mainMenu(vector<expenseItem> &budget) {
     
     int userChoice;
     bool userDone;
@@ -42,7 +48,7 @@ void mainMenu(void) {
         }
         
         if (userChoice==1) {
-            addExpenseMenu();
+            addExpenseMenu(budget);
         }
         
         if (userChoice==2) {
@@ -55,16 +61,19 @@ void mainMenu(void) {
     }
 }
 
-void addExpenseMenu(void) {
+void addExpenseMenu(vector<expenseItem> &budget) {
     
-    int userChoice;
-    bool userDone;
+    int tempInt;
+    string tempString;
     
     while(!userDone) {
         
-        cout << "Enter the corresponding number to select your choice of action:" << endl << "1: Add New Expense" << endl << "2: Search Expenses" << endl << "3: Exit Program" << endl << endl << "Your choice: ";
+        expenseItem newItem;
         
-        cin >> userChoice;
+        cout << "Enter a description of the expense: ";
+        
+        cin >> tempString;
+        newItem.setObject(tempString);
         
         while (userChoice < 1|| userChoice > 3) {
             cout << "Input invalid, please select again: " << endl;
