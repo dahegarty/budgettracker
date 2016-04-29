@@ -64,35 +64,23 @@ void mainMenu(vector<expenseItem> &budget) {
 
 void addExpenseMenu(vector<expenseItem> &budget) {
     
-    int tempInt;
+    //int tempInt;
     string tempString;
+    double tempDouble;
     
-    while(!userDone) {
         
-        expenseItem newItem;
+    expenseItem newItem;
         
-        cout << "Enter a description of the expense: ";
+    cout << "Enter a description of the expense: ";
+    cin >> tempString;
+    newItem.setObject(tempString);
         
-        cin >> tempString;
-        newItem.setObject(tempString);
+    cout << "Enter the price of the expense: ";
+    cin >> tempDouble;
+    newItem.setPrice(tempDouble);
         
-        while (userChoice < 1|| userChoice > 3) {
-            cout << "Input invalid, please select again: " << endl;
-            cin >> userChoice;
-        }
-        
-        if (userChoice==1) {
-            addExpenseMenu();
-        }
-        
-        if (userChoice==2) {
-            searchExpenseMenu();
-        }
-        
-        if (userChoice==3) {
-            userDone = true;
-        }
-    }
+    budget.push_back(newItem);
+    
 }
 
 void searchExpenseMenu(void) {

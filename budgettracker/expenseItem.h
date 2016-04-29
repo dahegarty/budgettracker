@@ -9,8 +9,12 @@
 #define expenseItem_h
 #include <string>
 
+using namespace std;
+
 
 class expenseItem{
+    
+public:
 
     //date
     string date;
@@ -23,7 +27,8 @@ class expenseItem{
         food = 1,
         bills = 2,
         personal = 3
-    }
+    };
+    
     expenseCategory category;
     
     //object purchased
@@ -32,7 +37,6 @@ class expenseItem{
     //vendor
     string vendor;
     
-private:
     void setDate(string d){
         date = d;
     }
@@ -52,9 +56,11 @@ private:
     void setCategory(expenseCategory c){
         category = c;
     }
-    void getCategory(){
+    
+    /*string getCategory(){
         return category;
-    }
+    }*/
+    
     void setObject(string o){
         object = o;
     }
