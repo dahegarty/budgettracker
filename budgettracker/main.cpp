@@ -18,6 +18,8 @@ int main(int argc, const char * argv[]) {
     
     cout << "Welcome to LLT's budget program." << endl << endl;
     
+    
+    
     mainMenu();
     
     return 0;
@@ -55,7 +57,7 @@ void mainMenu(void) {
 
 void addExpenseMenu(void) {
     
-    /* int userChoice;
+    int userChoice;
     bool userDone;
     
     while(!userDone) {
@@ -80,7 +82,7 @@ void addExpenseMenu(void) {
         if (userChoice==3) {
             userDone = true;
         }
-    } */
+    }
 }
 
 void searchExpenseMenu(void) {

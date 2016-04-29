@@ -25,6 +25,7 @@
 /* Begin PBXFileReference section */
 		494C54281C76450E00FC5AB7 /* budgettracker */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = budgettracker; sourceTree = BUILT_PRODUCTS_DIR; };
 		494C542B1C76450E00FC5AB7 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		498D89281CD3ED5B0058C251 /* budget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = budget.h; sourceTree = "<group>"; };
 		A02786871C764BF40034B59D /* expenseItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = expenseItem.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,6 +61,7 @@
 			children = (
 				494C542B1C76450E00FC5AB7 /* main.cpp */,
 				A02786871C764BF40034B59D /* expenseItem.h */,
+				498D89281CD3ED5B0058C251 /* budget.h */,
 			);
 			path = budgettracker;
 			sourceTree = "<group>";
