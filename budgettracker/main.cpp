@@ -11,7 +11,7 @@
 #include "expenseItem.h"
 #include <string>
 #include <vector>
-//I changed this 
+//I changed this too
 
 using namespace std;
 
