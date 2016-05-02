@@ -14,10 +14,11 @@
 using namespace std;
 
 class Budget {
-    vector<expenseItem> budget;//data structure to hold budget items
     string budgetName;//name of budget input by user
     string fileName;//filename of budget for permanent storage
 public:
+    vector<expenseItem> budget;//data structure to hold budget items
+    
     expenseItem getItem(int i){
         return budget[i];
     }
@@ -42,6 +43,9 @@ public:
     }
     void setFileName(string s){
         fileName = s;
+    }
+    void setVector(vector<expenseItem> itemList) {
+        budget = itemList;
     }
     
     
