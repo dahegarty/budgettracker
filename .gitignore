@@ -21,3 +21,9 @@ xcuserdata/
 *.xcscmblueprint
 
 *.xcodeproj
+*.sln
+*.db
+*.opendb
+*.vcxproj
+*.filters
+*.suo
