@@ -14,7 +14,7 @@ using namespace std;
 
 class expenseItem{
     
-public:
+private:
 
     //date
     string date;
@@ -36,6 +36,7 @@ public:
     
     //vendor
     string vendor;
+public:
     
     void setDate(string d){
         date = d;
@@ -57,9 +58,9 @@ public:
         category = c;
     }
     
-    /*string getCategory(){
+    expenseCategory getCategory(){
         return category;
-    }*/
+    }
     
     void setObject(string o){
         object = o;
