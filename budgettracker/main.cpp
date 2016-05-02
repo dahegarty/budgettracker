@@ -13,6 +13,7 @@
 #include <vector>
 #include <fstream>
 //I changed this 
+//I changed this too
 
 using namespace std;
 
@@ -26,6 +27,7 @@ int main(int argc, const char * argv[]) {
     int itemNumber;
     string tempString;
     double tempDouble;
+    string dumpString;
     
     vector<expenseItem> budget;
     
@@ -43,13 +45,14 @@ int main(int argc, const char * argv[]) {
             infile >> itemNumber;
             for (int counter = 0; counter < itemNumber; counter++)
             {
+                getline(infile, dumpString);
                 expenseItem newExpense;
                 budget.push_back(newExpense);
                 getline(infile, tempString);
-                cout << tempString;
+                //cout << tempString << endl;
                 budget[counter].setObject(tempString);
                 infile >> tempDouble;
-                cout << tempDouble;
+                //cout << tempDouble << endl;
                 budget[counter].setPrice(tempDouble);
             }
         }
