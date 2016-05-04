@@ -16,15 +16,16 @@
 //I changed this 
 //I changed this too
 
-int numberOfBudgets = 0;
-vector<Budget> vectorOfBudgets;
+//int numberOfBudgets = 0;
+//vector<Budget> vectorOfBudgets;
 
 using namespace std;
 
 void addExpenses(Budget &workingBudget);
 void searchExpenseMenu(void);
-void BudgetMenu(Budget &workingBudget);
+void BudgetMenu(Budget workingBudget);
 void save(Budget &workingBudget);
+void viewRecords(Budget &workingBudget);
 
 int main(int argc, const char * argv[]) {
     
@@ -56,8 +57,8 @@ int main(int argc, const char * argv[]) {
             newBudget.setName(tempString);
             budgetVector.push_back(newBudget);
         }
-        vectorOfBudgets = budgetVector;
-        numberOfBudgets = numBudgets;
+        //vectorOfBudgets = budgetVector;
+        //numberOfBudgets = numBudgets;
     }
     
     if (numBudgets > 0) {
@@ -109,26 +110,29 @@ int main(int argc, const char * argv[]) {
             Budget newBudget;
             newBudget.setName(tempString);
             workingBudget = newBudget;
-            numberOfBudgets++;
-            vectorOfBudgets.push_back(newBudget);
+            numBudgets++;
+            budgetVector.push_back(newBudget);
             
             ofstream budgetfile;
             budgetfile.open("budgetfile.txt");
             if (budgetfile) {
                 // cout << "open" << endl;
-                budgetfile << numberOfBudgets << endl;
-                for (int counter = 0; counter < numberOfBudgets; counter++) {
-                    budgetfile << vectorOfBudgets[counter].getName() << endl;
+                budgetfile << numBudgets << endl;
+                for (int counter = 0; counter < numBudgets; counter++) {
+                    budgetfile << budgetVector[counter].getName() << endl;
                 }
             }
         
-            workingBudget.setName(budgetChoice);
-            workingBudget.setVector(itemVector);
-        
         }
+        
+        workingBudget.setName(budgetChoice);
+        workingBudget.setVector(itemVector);
+        workingBudget.budgetVector = budgetVector;
+        workingBudget.numBudgets = numBudgets;
     }
     
     else {
+        
         cout << "No existing budgets found.  Please create one now." << endl;
         cout << "Enter a name for your new database: " << endl;
         cin >> tempString;
@@ -136,18 +140,20 @@ int main(int argc, const char * argv[]) {
         newBudget.setName(tempString);
         workingBudget = newBudget;
         
-        numberOfBudgets++;
-        vectorOfBudgets.push_back(newBudget);
+        numBudgets++;
+        budgetVector.push_back(newBudget);
         
         ofstream budgetfile;
         budgetfile.open("budgetfile.txt");
         if (budgetfile) {
             // cout << "open" << endl;
-            budgetfile << numberOfBudgets << endl;
-            for (int counter = 0; counter < numberOfBudgets; counter++) {
-                budgetfile << vectorOfBudgets[counter].getName() << endl;
+            budgetfile << numBudgets << endl;
+            for (int counter = 0; counter < numBudgets; counter++) {
+                budgetfile << budgetVector[counter].getName() << endl;
             }
         }
+        
+        workingBudget.budgetVector = budgetVector;
         
     }
     
@@ -159,14 +165,14 @@ int main(int argc, const char * argv[]) {
 }
 
 
-void BudgetMenu(Budget &workingBudget) {
+void BudgetMenu(Budget workingBudget) {
     
     int userChoice;
-    bool userDone;
+    bool userDone = false;
     
     while(!userDone) {
         
-        cout << "Enter the corresponding number to select your choice of action:" << endl << "1: Add New Expense" << endl << "2: Search Expenses" << endl << "3: Save & Exit" << endl << "4: Exit Without Saving" << endl << "Your choice: ";
+        cout << "Enter the corresponding number to select your choice of action:" << endl << "1: Add New Expense" << endl << "2: View Expenses" << endl << "3: Save & Exit" << endl << "4: Exit Without Saving" << endl << "Your choice: ";
         
         cin >> userChoice;
         
@@ -180,7 +186,7 @@ void BudgetMenu(Budget &workingBudget) {
         }
         
         if (userChoice==2) {
-            searchExpenseMenu();
+           viewRecords(workingBudget);
         }
         
         if (userChoice==3) {
@@ -191,6 +197,15 @@ void BudgetMenu(Budget &workingBudget) {
         if (userChoice==4) {
             userDone = true;
         }
+    }
+}
+
+void viewRecords(Budget &workingBudget) {
+    cout << "NumRecords: " << workingBudget.expenseVector.size() << endl;
+    for (int counter = 0; counter < workingBudget.expenseVector.size(); counter++) {
+        //cout << counter << endl;
+        cout << workingBudget.expenseVector[counter].getObject() << endl;
+        cout << workingBudget.expenseVector[counter].getPrice() << endl;
     }
 }
 
@@ -210,7 +225,7 @@ void addExpenses(Budget &workingBudget) {
     cin >> tempDouble;
     newItem.setPrice(tempDouble);
         
-    workingBudget.budget.push_back(newItem);
+    workingBudget.expenseVector.push_back(newItem);
     
 }
 
@@ -219,11 +234,11 @@ void save(Budget &workingBudget) {
     ofstream savefile;
     savefile.open(workingBudget.getName()+".txt");
     if (savefile) {
-        // cout << "open" << endl;
-        savefile << workingBudget.budget.size() << endl;
-        for (int counter=0; counter < workingBudget.budget.size(); counter++) {
-            savefile << workingBudget.budget[counter].getObject() << endl;
-            savefile << workingBudget.budget[counter].getPrice() << endl;
+        cout << "open" << endl;
+        savefile << workingBudget.expenseVector.size() << endl;
+        for (int counter=0; counter < workingBudget.expenseVector.size(); counter++) {
+            savefile << workingBudget.expenseVector[counter].getObject() << endl;
+            savefile << workingBudget.expenseVector[counter].getPrice() << endl;
         }
     }
 }

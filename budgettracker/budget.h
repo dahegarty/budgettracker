@@ -14,20 +14,26 @@
 using namespace std;
 
 class Budget {
+    
     string budgetName;//name of budget input by user
     string fileName;//filename of budget for permanent storage
+    
 public:
-    vector<expenseItem> budget;//data structure to hold budget items
+    
+    vector<expenseItem> expenseVector;//data structure to hold budget items
+    vector<Budget> budgetVector;
+    int numBudgets;
+    
     
     expenseItem getItem(int i){
-        return budget[i];
+        return expenseVector[i];
     }
     void insertItem(expenseItem c){
-        budget.push_back(c);
+        expenseVector.push_back(c);
     }
     
     int budgetSize(){
-        return budget.size();
+        return expenseVector.size();
     }
     
     
@@ -45,7 +51,7 @@ public:
         fileName = s;
     }
     void setVector(vector<expenseItem> itemList) {
-        budget = itemList;
+        expenseVector = itemList;
     }
     
     
